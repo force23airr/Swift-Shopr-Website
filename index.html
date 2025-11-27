@@ -3,161 +3,695 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swift Shopr - Mobile Retail Technology</title>
+    <title>SwiftShopr - Modern Payment Infrastructure for Retail</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a2e;
             line-height: 1.6;
-            color: #333;
+            overflow-x: hidden;
         }
-        .header { 
-            text-align: center; 
-            background: #f4f4f4; 
-            padding: 20px; 
-            border-radius: 8px; 
-            margin-bottom: 30px;
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .section { 
-            margin: 30px 0; 
-            padding: 20px 0; 
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+            font-weight: 300;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #1a1a2e;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section-dark {
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a2e;
+            font-weight: 700;
+        }
+
+        /* Two Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-color: #00d4ff;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .service-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.8rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            color: #1a1a2e;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .step h4 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-item h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-item li {
+            padding: 0.5rem 0;
+            color: #666;
             border-bottom: 1px solid #eee;
         }
-        .contact-info {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
+
+        .tech-item li:last-child {
+            border-bottom: none;
         }
-        h1 { color: #2c3e50; }
-        h2 { color: #34495e; }
-        ul { padding-left: 20px; }
-        li { margin: 10px 0; }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+            margin: 0;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .qr-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .qr-box h4 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .qr-box img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .qr-box p {
+            color: #666;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: #ccc;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+
+        footer h4 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #00d4ff;
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .qr-container {
+                gap: 2rem;
+            }
+
+            footer .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Swift Shopr</h1>
-        <p><strong>Revolutionary Mobile Checkout Technology for Retail Stores</strong></p>
-        <p>Transforming the retail shopping experience through innovative barcode scanning and mobile payment solutions</p>
-    </div>
-    
-    <div class="section">
-        <h2>About Our Business</h2>
-        <p>Shopr Scanner provides cutting-edge mobile applications that enable customers to scan product barcodes and complete purchases directly through their smartphones while shopping in retail stores. Our technology seamlessly integrates with existing point-of-sale systems to process legitimate retail transactions, reducing checkout lines and enhancing the overall shopping experience.</p>
-        
-        <p>Founded in 2025, we are committed to revolutionizing how customers interact with retail environments by providing contactless, efficient, and user-friendly checkout solutions.</p>
-    </div>
-    
-    <div class="section">
-        <h2>Our Services</h2>
-        <ul>
-            <li><strong>Mobile Barcode Scanning Application</strong> - Professional-grade React Native app for iOS and Android</li>
-            <li><strong>Retail POS System Integration</strong> - Seamless connection with existing store infrastructure</li>
-            <li><strong>Secure Payment Processing</strong> - Encrypted, PCI-compliant transaction handling</li>
-            <li><strong>Digital Receipt Generation</strong> - Instant, eco-friendly receipt delivery</li>
-            <li><strong>Real-time Inventory Management</strong> - Live stock level integration</li>
-            <li><strong>Analytics Dashboard</strong> - Comprehensive reporting for retail partners</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h2>Business Model & Pricing</h2>
-        <p>We generate revenue through service fees charged to retail partners when customers successfully complete purchases using our mobile platform. Our pricing structure is designed to be cost-effective for retailers while providing exceptional value through reduced labor costs and enhanced customer satisfaction.</p>
-        
-        <p><strong>Pricing Model:</strong></p>
-        <ul>
-            <li>Transaction-based service fees for retail partners</li>
-            <li>Tiered pricing based on transaction volume</li>
-            <li>Custom enterprise solutions for large retail chains</li>
-            <li>No cost to end-users (customers)</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h2>Technology & Security</h2>
-        <p>Our platform is built using enterprise-grade technology stack including React Native for mobile applications, Node.js backend infrastructure, PostgreSQL databases, and Stripe payment processing. All transactions are processed securely through certified payment processors with end-to-end encryption.</p>
-        
-        <p><strong>Security Features:</strong></p>
-        <ul>
-            <li>PCI DSS compliant payment processing</li>
-            <li>SSL/TLS encryption for all data transmission</li>
-            <li>Secure authentication and authorization</li>
-            <li>Regular security audits and compliance monitoring</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h2>Target Market</h2>
-        <p>We serve retail stores seeking to modernize their checkout experience and reduce operational costs. Our solution is particularly valuable for:</p>
-        <ul>
-            <li>Department stores and fashion retailers</li>
-            <li>Grocery and convenience stores</li>
-            <li>Electronics and specialty retail</li>
-            <li>Multi-location retail chains</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h2>Development Status</h2>
-        <p><strong>Current Phase:</strong> Technology Development and Testing</p>
-        <p><strong>Launch Timeline:</strong> Q2-Q3 2025</p>
-        <p><strong>Beta Testing:</strong> Available for select retail partners</p>
-        <p><strong>Platform Status:</strong> iOS and Android applications in active development</p>
-    </div>
-    
-    <div class="section">
-        <div class="contact-info">
-            <h2>Contact Information</h2>
-            <p><strong>Business Name:</strong> Swift Shopr</p>
-            <p><strong>Email:</strong> support@swiftshopr.org</p>
-            <p><strong>Business Type:</strong> Technology Services</p>
-            <p><strong>Industry:</strong> Mobile Application Development / Retail Technology</p>
-            <p><strong>Location:</strong> United States</p>
-            <p><strong>Status:</strong> Active Development</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a class="logo" onclick="scrollToSection('home')">SwiftShopr</a>
+            <ul>
+                <li><a onclick="scrollToSection('services')">Services</a></li>
+                <li><a onclick="scrollToSection('benefits')">Why Us</a></li>
+                <li><a onclick="scrollToSection('how')">How It Works</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
         </div>
-    </div>
-    
-    <div class="section">
-        <h2>Privacy Policy</h2>
-        <p>Shopr Scanner is committed to protecting user privacy and data security. We collect only the minimal data necessary for transaction processing and service delivery. All personal and payment information is handled in accordance with applicable data protection regulations including GDPR and CCPA.</p>
-        
-        <p><strong>Data Collection:</strong></p>
-        <ul>
-            <li>Transaction data for payment processing</li>
-            <li>Product scanning analytics for service improvement</li>
-            <li>Basic user account information for authentication</li>
-        </ul>
-        
-        <p><strong>Data Protection:</strong></p>
-        <ul>
-            <li>All payment data processed through certified payment processors</li>
-            <li>User data encrypted at rest and in transit</li>
-            <li>Regular security audits and compliance monitoring</li>
-            <li>User rights respected including data deletion requests</li>
-        </ul>
-    </div>
-    
-    <div class="section">
-        <h2>Terms of Service</h2>
-        <p>Services provided to retail partners on a contractual basis with clearly defined terms and conditions. End-user terms and conditions are implemented through retail partner agreements and mobile application terms.</p>
-        
-        <p><strong>Service Agreement:</strong></p>
-        <ul>
-            <li>Technology provided as Software-as-a-Service (SaaS)</li>
-            <li>Service level agreements for uptime and performance</li>
-            <li>Support and maintenance included in service fees</li>
-            <li>Intellectual property rights protected</li>
-        </ul>
-        
-        <p><strong>Limitation of Liability:</strong> Services provided during development phase with appropriate disclaimers and limitations as standard in technology service agreements.</p>
-    </div>
-    
-    <div class="section">
-        <p style="text-align: center; color: #666; font-size: 14px;">
-            © 2025 Swift Shopr All rights reserved. | Revolutionizing retail checkout experiences.
-        </p>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>The Future of Retail Payments</h1>
+            <p class="tagline">Scan-and-Go Checkout. Instant Settlement. Zero Chargebacks.</p>
+            <p>SwiftShopr revolutionizes how retailers process payments and how customers checkout. Powered by blockchain-based stablecoin rails and instant mobile payments.</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('contact')">Contact for Merchant Pilot</button>
+                <button class="btn btn-secondary" onclick="window.open('https://apps.apple.com/us/app/swift-shopr/id6751731104', '_blank')">Download App</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section-dark" id="services">
+        <div class="container">
+            <h2>Two Powerful Services</h2>
+            <div class="services-grid">
+                <!-- Scan-and-Go -->
+                <div class="service-card">
+                    <h3>🛒 Scan-and-Go Checkout</h3>
+                    <p>Customers scan product barcodes as they shop, building their cart in real-time. At the exit, they pay directly through the SwiftShopr app—no lines, no cashiers needed.</p>
+                    <ul class="service-features">
+                        <li>Real-time cart building</li>
+                        <li>Direct mobile payment</li>
+                        <li>Instant receipt</li>
+                        <li>Zero checkout lines</li>
+                        <li>Customer cashback rewards</li>
+                    </ul>
+                </div>
+
+                <!-- QR Checkout -->
+                <div class="service-card">
+                    <h3>⚡ QR Code Payment</h3>
+                    <p>Traditional checkout experience enhanced. Customers scan a QR code on your payment terminal and confirm payment instantly through their phone—faster than cards.</p>
+                    <ul class="service-features">
+                        <li>Fast mobile checkout</li>
+                        <li>Works on existing terminals</li>
+                        <li>No hardware changes</li>
+                        <li>Instant settlement</li>
+                        <li>Customer cashback rewards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <h2>Why Choose SwiftShopr</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h4>65% Lower Fees</h4>
+                    <p>Reduce processing costs through blockchain-powered USDC settlement or traditional payment rails.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Instant Settlement</h4>
+                    <p>Get paid in seconds, not 2-3 days. Funds settle instantly to your wallet.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h4>Zero Chargebacks</h4>
+                    <p>Blockchain finality eliminates chargeback risk entirely. Transactions are irreversible.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h4>Mobile-First</h4>
+                    <p>Meets customer expectations for fast, phone-based payments in 2025.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h4>Customer Rewards</h4>
+                    <p>Built-in cashback funded by your fee savings. Increases repeat visits.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔌</div>
+                    <h4>Easy Integration</h4>
+                    <p>Works with your existing POS system. No hardware replacement needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section section-dark" id="how">
+        <div class="container">
+            <div class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Customer Shops</h4>
+                        <p>Scans items or reaches checkout with their cart ready.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>QR Displays</h4>
+                        <p>SwiftShopr QR code appears on terminal or in app.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Instant Payment</h4>
+                        <p>Customer scans QR, confirms payment in seconds.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Settlement Complete</h4>
+                        <p>Funds settle instantly. Customer earns cashback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Checkout?</h2>
+            <p>Join merchants using SwiftShopr to reduce costs and improve customer experience.</p>
+            
+            <div class="qr-container">
+                <div class="qr-box">
+                    <h4>Download the App</h4>
+                    <!-- Placeholder for QR code - replace with actual QR code image -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Crect fill='%23f0f0f0' width='180' height='180'/%3E%3Ctext x='50%' y='50%' text-anchor='middle' dy='.3em' fill='%23999' font-size='16'%3E[QR Code]%3C/text%3E%3C/svg%3E" alt="Download SwiftShopr App">
+                    <p>Scan to download on iOS or Android</p>
+                </div>
+                <div class="qr-box">
+                    <h4>Contact for Merchant Pilot</h4>
+                    <p style="font-size: 1rem; margin: 2rem 0;"><strong>Email:</strong></p>
+                    <p style="font-size: 1.1rem; color: #00d4ff; font-weight: bold;">support@swiftshopr.org</p>
+                    <p style="margin-top: 1rem;"><strong>Or reach out directly:</strong></p>
+                    <p style="color: #666;">Merchant partnerships & business inquiries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>SwiftShopr</h4>
+                <p>Revolutionizing retail payments through instant checkout and blockchain settlement.</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#compliance">Compliance</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <a href="mailto:support@swiftshopr.org">support@swiftshopr.org</a>
+                <a href="#">Download App</a>
+                <a href="#">Merchant Pilot</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SwiftShopr. All rights reserved. | Transforming retail one transaction at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
