@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - SwiftShopr</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a2e;
+            line-height: 1.8;
+            background: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .policy-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 100px 2rem 60px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .policy-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .policy-header p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .last-updated {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Content */
+        .policy-content {
+            background: white;
+            padding: 60px 2rem;
+            margin-bottom: 0;
+        }
+
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+
+        .policy-section h2 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 700;
+        }
+
+        .policy-section h3 {
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .policy-section p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-section li {
+            color: #555;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .policy-section li::before {
+            content: '•';
+            color: #00d4ff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 204, 0.1) 100%);
+            border-left: 4px solid #00d4ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: #00d4ff;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #1a1a2e;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .toc a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #0099cc;
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .contact-section h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .contact-section a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .contact-section a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: #ccc;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .policy-header h1 {
+                font-size: 2rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a class="logo" onclick="window.location.href='index.html'">SwiftShopr</a>
+            <ul>
+                <li><a onclick="window.location.href='index.html'">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="policy-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us</p>
+            <p class="last-updated">Effective Date: November 25, 2025</p>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="policy-content">
+        <div class="container">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>📋 Table of Contents</h3>
+                <ul>
+                    <li><a href="#information">Information We Collect</a></li>
+                    <li><a href="#how-we-use">How We Use Your Information</a></li>
+                    <li><a href="#sharing">Data Sharing</a></li>
+                    <li><a href="#security">Data Security</a></li>
+                    <li><a href="#rights">Your Rights</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1: Information We Collect -->
+            <div class="policy-section" id="information">
+                <h2>📱 Information We Collect</h2>
+
+                <h3>Personal Information</h3>
+                <p>When you use SwiftShopr, we collect the following personal information:</p>
+                <ul>
+                    <li><strong>Email addresses</strong> for account creation and login</li>
+                    <li><strong>User IDs</strong> generated by our authentication system</li>
+                    <li><strong>Device identifiers</strong> for app functionality and security</li>
+                    <li><strong>Purchase history</strong> including items scanned, purchased, and digital receipts</li>
+                    <li><strong>Product interaction data</strong> such as barcode scans and cart activity</li>
+                </ul>
+
+                <h3>Technical Information</h3>
+                <p>We also collect technical data to improve your experience:</p>
+                <ul>
+                    <li><strong>Performance data</strong> including app launch times and response speeds</li>
+                    <li><strong>Crash reports</strong> (anonymized) to improve app stability</li>
+                    <li><strong>Usage analytics</strong> to understand how you interact with the app</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Note:</strong> We collect only the minimum information necessary to provide our services. We do not collect unnecessary personal data.
+                </div>
+            </div>
+
+            <!-- Section 2: How We Use Your Information -->
+            <div class="policy-section" id="how-we-use">
+                <h2>⚙️ How We Use Your Information</h2>
+                <p>Your information is used for the following purposes:</p>
+                <ul>
+                    <li><strong>Account management</strong> - Creating and maintaining user accounts</li>
+                    <li><strong>App functionality</strong> - Processing purchases, generating receipts, storing cart data</li>
+                    <li><strong>Analytics</strong> - Understanding app usage to improve features and performance</li>
+                    <li><strong>Security</strong> - Preventing fraud and maintaining app security</li>
+                    <li><strong>Communication</strong> - Responding to support requests and inquiries</li>
+                </ul>
+
+                <p>We do not use your information for marketing purposes without explicit consent.</p>
+            </div>
+
+            <!-- Section 3: Data Sharing -->
+            <div class="policy-section" id="sharing">
+                <h2>🔄 Data Sharing</h2>
+                <p><strong>We do not sell, rent, or share your personal information with third parties for advertising or marketing purposes.</strong></p>
+
+                <p>We work with trusted service providers to deliver our services:</p>
+                <ul>
+                    <li><strong>Firebase</strong> for user authentication and account management</li>
+                    <li><strong>Coinbase</strong> for USDC wallet management (when using blockchain settlement)</li>
+                    <li><strong>Payment processors</strong> for card transactions (when applicable)</li>
+                    <li><strong>Backend servers</strong> for app functionality and data storage</li>
+                </ul>
+
+                <p>All service providers are contractually obligated to protect your data and use it only for providing the services we have contracted them for.</p>
+
+                <div class="highlight-box">
+                    <strong>Important:</strong> We may disclose information if required by law or if necessary to protect the safety and security of our users and platform.
+                </div>
+            </div>
+
+            <!-- Section 4: Data Security -->
+            <div class="policy-section" id="security">
+                <h2>🛡️ Data Security</h2>
+                <p>We take data security seriously and implement industry-standard measures to protect your information:</p>
+                <ul>
+                    <li><strong>Encryption</strong> - All data in transit is encrypted using SSL/TLS protocols</li>
+                    <li><strong>Secure storage</strong> - Data at rest is encrypted and stored securely</li>
+                    <li><strong>Access controls</strong> - Only authorized personnel have access to personal data</li>
+                    <li><strong>Regular audits</strong> - We conduct security assessments to identify and address vulnerabilities</li>
+                </ul>
+
+                <p><strong>Payment Information:</strong> Payment information is processed securely and is never stored on our servers. When using card payments, transactions are processed through certified payment processors. When using USDC, transactions are settled directly on the blockchain without storing sensitive data.</p>
+
+                <div class="highlight-box">
+                    <strong>Note:</strong> While we implement strong security measures, no system is 100% secure. We encourage you to use strong passwords and protect your account credentials.
+                </div>
+            </div>
+
+            <!-- Section 5: Your Rights -->
+            <div class="policy-section" id="rights">
+                <h2>👤 Your Rights</h2>
+                <p>You have the following rights regarding your personal information:</p>
+                <ul>
+                    <li><strong>Right to access</strong> - You can request a copy of the personal data we hold about you</li>
+                    <li><strong>Right to correction</strong> - You can request correction of inaccurate information</li>
+                    <li><strong>Right to deletion</strong> - You can request deletion of your personal data (subject to legal obligations)</li>
+                    <li><strong>Right to opt-out</strong> - You can opt out of certain data collection practices</li>
+                    <li><strong>Right to data portability</strong> - You can request your data in a portable format</li>
+                </ul>
+
+                <p>To exercise any of these rights, please contact us using the information below.</p>
+
+                <h3>Compliance with Data Protection Laws</h3>
+                <p>SwiftShopr complies with applicable data protection regulations including:</p>
+                <ul>
+                    <li>General Data Protection Regulation (GDPR)</li>
+                    <li>California Consumer Privacy Act (CCPA)</li>
+                    <li>Other applicable local and international privacy laws</li>
+                </ul>
+            </div>
+
+            <!-- Section 6: Contact Us -->
+            <div class="policy-section" id="contact">
+                <h2>📧 Contact Us</h2>
+                <p>If you have questions, concerns, or requests regarding this privacy policy or your personal data, please contact us:</p>
+
+                <div class="contact-section">
+                    <h3>Privacy & Data Protection Inquiries</h3>
+                    <p style="margin: 1rem 0; font-size: 1.1rem;">
+                        <strong>Email:</strong> <a href="mailto:support@swiftshopr.org">support@swiftshopr.org</a>
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.9);">
+                        Response time: We aim to respond to all inquiries within 30 days
+                    </p>
+                </div>
+            </div>
+
+            <!-- Final Section -->
+            <div class="policy-section">
+                <h2>📝 Policy Updates</h2>
+                <p>We may update this privacy policy periodically to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will notify you by updating the "Effective Date" at the top of this page.</p>
+
+                <p><strong>Continued use of SwiftShopr following any updates to this privacy policy constitutes your acceptance of those changes.</strong></p>
+
+                <p style="margin-top: 2rem; color: #999; font-size: 0.95rem;">
+                    Last updated: November 25, 2025
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SwiftShopr. All rights reserved. | <a href="index.html" style="color: #00d4ff; text-decoration: none;">Back to Home</a></p>
+    </footer>
+</body>
+</html>
