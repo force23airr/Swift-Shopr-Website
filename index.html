@@ -238,34 +238,59 @@
         }
 
         /* Benefits Section */
-        .benefits-grid {
+        .benefits-two-col {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .benefits-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .benefits-col-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #00d4ff;
+            margin-bottom: 0.5rem;
         }
 
         .benefit-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-radius: 10px;
-            text-align: center;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            flex-shrink: 0;
         }
 
         .benefit-card h4 {
             color: #1a1a2e;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
         }
 
         .benefit-card p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .benefits-two-col {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* How It Works */
@@ -477,10 +502,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
             .steps {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -568,36 +589,54 @@
     <section class="section" id="benefits">
         <div class="container">
             <h2>Why Choose SwiftShopr</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h4>65% Lower Fees</h4>
-                    <p>Reduce processing costs through blockchain-powered USDC settlement or traditional payment rails.</p>
+            <div class="benefits-two-col">
+                <!-- For Retailers -->
+                <div class="benefits-column">
+                    <h3 class="benefits-col-title">For Retailers</h3>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h4>Lower Processing Fees</h4>
+                        <p>Significantly reduce payment processing costs through blockchain-powered USDC settlement or traditional payment rails.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h4>Instant Settlement</h4>
+                        <p>Funds settle in seconds, not 2–3 business days — improving cash flow and operational efficiency.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛡️</div>
+                        <h4>Zero Chargebacks</h4>
+                        <p>Blockchain finality makes every transaction irreversible, eliminating chargeback risk entirely.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔌</div>
+                        <h4>Seamless Integration</h4>
+                        <p>Compatible with your existing infrastructure. No hardware replacements or complex technical setup required.</p>
+                    </div>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h4>Instant Settlement</h4>
-                    <p>Get paid in seconds, not 2-3 days. Funds settle instantly to your wallet.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🛡️</div>
-                    <h4>Zero Chargebacks</h4>
-                    <p>Blockchain finality eliminates chargeback risk entirely. Transactions are irreversible.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">📱</div>
-                    <h4>Mobile-First</h4>
-                    <p>Meets customer expectations for fast, phone-based payments in 2025.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎁</div>
-                    <h4>Customer Rewards</h4>
-                    <p>Built-in cashback funded by your fee savings. Increases repeat visits.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🔌</div>
-                    <h4>Easy Integration</h4>
-                    <p>Works with your existing POS system. No hardware replacement needed.</p>
+                <!-- For Customers -->
+                <div class="benefits-column">
+                    <h3 class="benefits-col-title">For Customers</h3>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📱</div>
+                        <h4>Mobile-First Experience</h4>
+                        <p>A fast, intuitive checkout experience built for today's smartphone-first consumer.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎁</div>
+                        <h4>Cashback Rewards</h4>
+                        <p>Customers earn cashback on every purchase, encouraging loyalty and repeat visits.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛒</div>
+                        <h4>Skip the Line</h4>
+                        <p>Scan items throughout the store, pay from the app, and walk out — no waiting at a register.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔒</div>
+                        <h4>Secure Transactions</h4>
+                        <p>Every payment is protected by blockchain technology, ensuring safe and transparent transactions.</p>
+                    </div>
                 </div>
             </div>
         </div>
