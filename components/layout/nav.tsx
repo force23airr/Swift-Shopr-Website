@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { href: '/for-shoppers/', label: 'Shoppers' },
   { href: '/for-retailers/', label: 'Retailers' },
   { href: '/about/', label: 'About' },
-  { href: '/ai-demo/', label: 'AI Demo', highlight: true },
+  { href: '/swifty/', label: 'Swifty AI', highlight: true },
 ];
 
 export function Nav() {

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { ArrowRight, RotateCcw, Sparkles, Download, ShieldCheck, Clock } from 'lucide-react';
+import { ArrowRight, RotateCcw, Sparkles, Download, ShieldCheck, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -11,7 +11,7 @@ import { ChatMessage } from '@/components/demo/chat-message';
 import { SuggestionChips } from '@/components/demo/suggestion-chips';
 import { useDemoChat } from '@/hooks/use-demo-chat';
 
-export default function AiDemoPage() {
+export default function SwiftyPage() {
   const { messages, sending, rateLimit, wakingUp, sendMessage, reset } = useDemoChat();
   const [showRateLimit, setShowRateLimit] = React.useState(false);
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -41,15 +41,15 @@ export default function AiDemoPage() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="gradient" className="mb-6">
               <Sparkles className="mr-1.5 h-3 w-3" />
-              Live Demo
+              Swifty AI
             </Badge>
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Meet <span className="text-gradient">Swifty.</span>
+              <span className="text-gradient">Shop smarter.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-              This is the real AI shopping agent that powers SwiftShopr. Ask for
-              outfits, meals, or product ideas — get real recommendations from
-              our catalog, live.
+              Swifty is SwiftShopr's AI shopping assistant. Ask for outfits,
+              meals, or products — get real recommendations with images, prices,
+              and direct links.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
@@ -57,8 +57,8 @@ export default function AiDemoPage() {
                 Anonymous · No sign-up
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-3.5 w-3.5 text-primary" />
-                10 messages · 30-day cookie
+                <Zap className="h-3.5 w-3.5 text-primary" />
+                Real AI · Real products
               </span>
             </div>
           </div>
@@ -128,27 +128,27 @@ export default function AiDemoPage() {
                   }
                 />
                 <div className="mt-3 text-center text-xs text-muted-foreground">
-                  This is a limited public demo. For unlimited AI shopping,{' '}
+                  Personalized picks, unlimited use, and in-store scan-and-go —{' '}
                   <Link href={appStoreUrl} className="font-medium text-primary hover:underline" target="_blank" rel="noreferrer">
-                    download the app
+                    get the app
                   </Link>.
                 </div>
               </div>
             </div>
 
-            {/* Below chat — social proof */}
+            {/* Below chat */}
             <div className="mt-12 grid gap-6 text-center md:grid-cols-3">
               <InfoBlock
-                title="Real recommendations"
-                body="Swifty queries our live product catalog, not canned responses."
+                title="Real AI, real products"
+                body="Swifty is powered by Claude and queries our live catalog — not canned responses."
               />
               <InfoBlock
                 title="Personalization in-app"
-                body="In the mobile app, Swifty uses your style, size, and dietary profile for better picks."
+                body="In the mobile app, Swifty learns your style, size, and dietary profile for better picks."
               />
               <InfoBlock
                 title="No sign-up required"
-                body="This public demo is anonymous. Your session resets when you close the tab."
+                body="Try Swifty here anonymously. Your session resets when you close the tab."
               />
             </div>
 
@@ -172,10 +172,10 @@ export default function AiDemoPage() {
             <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-brand-blue to-brand-purple text-white">
               <Sparkles className="h-5 w-5" />
             </div>
-            <DialogTitle className="text-center">You've reached the demo limit</DialogTitle>
+            <DialogTitle className="text-center">Keep the conversation going</DialogTitle>
             <DialogDescription className="text-center">
               {rateLimit?.message ||
-                "You've used your demo messages for the hour. Download SwiftShopr for unlimited AI shopping."}
+                "You've hit the free message limit for the hour. Get SwiftShopr for unlimited AI shopping and personalized picks."}
             </DialogDescription>
           </DialogHeader>
           <div className="mt-4 flex flex-col gap-2">

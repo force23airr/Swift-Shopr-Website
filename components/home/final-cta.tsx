@@ -43,8 +43,8 @@ export function FinalCta() {
                 size="xl"
                 className="bg-white text-brand-blue hover:bg-white/90"
               >
-                <Link href="/ai-demo/">
-                  Try the AI Demo
+                <Link href="/swifty/">
+                  Try Swifty AI
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>

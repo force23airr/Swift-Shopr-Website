@@ -31,10 +31,10 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <Link href="/ai-demo/" className="inline-flex">
+          <Link href="/swifty/" className="inline-flex">
             <Badge variant="gradient" className="mb-6 gap-1.5 px-3 py-1">
               <Sparkles className="h-3 w-3" />
-              <span>Now: AI Shopping Agent Live</span>
+              <span>Swifty AI — Shop Smarter</span>
               <ArrowRight className="h-3 w-3" />
             </Badge>
           </Link>
@@ -52,8 +52,8 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild variant="gradient" size="xl">
-              <Link href="/ai-demo/">
-                Try the AI Demo
+              <Link href="/swifty/">
+                Try Swifty AI
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

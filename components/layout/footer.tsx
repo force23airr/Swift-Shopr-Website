@@ -7,7 +7,7 @@ const COLUMNS = [
     links: [
       { href: '/for-shoppers/', label: 'For Shoppers' },
       { href: '/for-retailers/', label: 'For Retailers' },
-      { href: '/ai-demo/', label: 'AI Shopping Demo' },
+      { href: '/swifty/', label: 'Swifty AI' },
     ],
   },
   {

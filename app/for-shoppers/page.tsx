@@ -99,8 +99,8 @@ export default function ForShoppersPage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="xl">
-                <Link href="/ai-demo/">
-                  Try the AI Demo
+                <Link href="/swifty/">
+                  Try Swifty AI
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
