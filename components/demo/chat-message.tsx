@@ -1,10 +1,12 @@
 'use client';
 
+import * as React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, User, AlertCircle } from 'lucide-react';
+import { Sparkles, User, AlertCircle, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ChatMessage as ChatMessageType } from '@/hooks/use-demo-chat';
-import type { DemoChatOutfit } from '@/lib/api';
+import type { DemoChatOutfit, DemoChatProduct } from '@/lib/api';
+import { Button } from '@/components/ui/button';
 import { ProductCard } from './product-card';
 
 export function ChatMessage({
@@ -79,6 +81,38 @@ export function ChatMessage({
 
 function OutfitBlock({ outfit }: { outfit: DemoChatOutfit }) {
   const items = [outfit.top, outfit.bottom, outfit.shoes].filter(Boolean);
+  const [selectedIds, setSelectedIds] = React.useState<Set<string>>(new Set());
+
+  const toggleSelect = (product: DemoChatProduct) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(product.id)) {
+        next.delete(product.id);
+      } else {
+        next.add(product.id);
+      }
+      return next;
+    });
+  };
+
+  const selected = items.filter((i) => selectedIds.has(i.id));
+  const selectedTotalCents = selected.reduce(
+    (sum, i) => sum + (typeof i.price_cents === 'number' ? i.price_cents : 0),
+    0,
+  );
+  const hasSelection = selected.length > 0;
+
+  const handleShopSelected = () => {
+    // Opens each selected item's affiliate URL in a new tab. Triggered inside a
+    // user-click handler so browsers generally allow multiple window.open calls.
+    selected.forEach((item) => {
+      const url = item.affiliate_url || item.product_url;
+      if (url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    });
+  };
+
   return (
     <div className="rounded-xl border border-border bg-background/60 p-3">
       {outfit.description && (
@@ -88,14 +122,51 @@ function OutfitBlock({ outfit }: { outfit: DemoChatOutfit }) {
       )}
       <div className="grid grid-cols-3 gap-2">
         {items.map((item) => (
-          <ProductCard key={item.id} product={item} compact />
+          <ProductCard
+            key={item.id}
+            product={item}
+            compact
+            selected={selectedIds.has(item.id)}
+            onToggleSelect={toggleSelect}
+          />
         ))}
       </div>
-      {outfit.total_price && (
-        <div className="mt-2 text-right text-xs font-semibold text-primary">
-          Total: {outfit.total_price}
+
+      <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/60 pt-3">
+        <div className="min-w-0 text-xs">
+          {hasSelection ? (
+            <>
+              <div className="font-semibold">
+                {selected.length} {selected.length === 1 ? 'item' : 'items'} selected
+              </div>
+              {selectedTotalCents > 0 && (
+                <div className="text-muted-foreground">
+                  ${(selectedTotalCents / 100).toFixed(2)} total
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="text-muted-foreground">Check items to shop</div>
+              {outfit.total_price && (
+                <div className="text-muted-foreground">
+                  Full outfit: {outfit.total_price}
+                </div>
+              )}
+            </>
+          )}
         </div>
-      )}
+        <Button
+          variant={hasSelection ? 'gradient' : 'outline'}
+          size="sm"
+          disabled={!hasSelection}
+          onClick={handleShopSelected}
+          className="shrink-0"
+        >
+          <ShoppingBag className="h-3.5 w-3.5" />
+          Shop Selected
+        </Button>
+      </div>
     </div>
   );
 }
