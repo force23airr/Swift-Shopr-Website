@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/for-retailers',
     '/about',
     '/swifty',
+    '/preferences',
     '/support',
     '/privacy',
     '/terms',

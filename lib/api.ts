@@ -25,6 +25,7 @@ export interface DemoChatRequest {
   message: string;
   sessionId: string;
   conversation_id?: string | null;
+  webUserId?: string;
 }
 
 // Matches commerce-agent-service's ProductRecommendation.

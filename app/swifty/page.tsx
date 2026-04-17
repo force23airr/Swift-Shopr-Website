@@ -62,6 +62,16 @@ export default function SwiftyPage() {
                 Real AI · Real products
               </span>
             </div>
+            <div className="mt-5">
+              <Link
+                href="/preferences/"
+                className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                <Sparkles className="h-3 w-3" />
+                Personalize Swifty
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

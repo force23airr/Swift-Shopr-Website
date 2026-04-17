@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { sendDemoChat, type DemoChatOutfit } from '@/lib/api';
 import { getOrCreateSessionId, resetSessionId } from '@/lib/session';
+import { getOrCreateWebUserId } from '@/lib/web-identity';
 
 export type ChatMessage =
   | { id: string; role: 'user'; content: string }
@@ -27,12 +28,14 @@ export function useDemoChat() {
   const [conversationId, setConversationId] = React.useState<string | null>(null);
   const [rateLimit, setRateLimit] = React.useState<RateLimitInfo | null>(null);
   const [sessionId, setSessionIdState] = React.useState<string>('');
+  const [webUserId, setWebUserId] = React.useState<string>('');
   const controllerRef = React.useRef<AbortController | null>(null);
   const startRef = React.useRef<number>(0);
   const [wakingUp, setWakingUp] = React.useState(false);
 
   React.useEffect(() => {
     setSessionIdState(getOrCreateSessionId());
+    setWebUserId(getOrCreateWebUserId());
   }, []);
 
   const sendMessage = React.useCallback(
@@ -68,6 +71,7 @@ export function useDemoChat() {
             message: message.trim(),
             sessionId,
             conversation_id: conversationId,
+            webUserId: webUserId || undefined,
           },
           controllerRef.current.signal,
         );
@@ -159,7 +163,7 @@ export function useDemoChat() {
         setSending(false);
       }
     },
-    [sending, sessionId, conversationId],
+    [sending, sessionId, conversationId, webUserId],
   );
 
   const reset = React.useCallback(() => {
