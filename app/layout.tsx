@@ -45,9 +45,8 @@ export const metadata: Metadata = {
     description:
       'AI-powered checkout for modern retail. Scan, pay, walk out.',
   },
-  icons: {
-    icon: '/favicon.ico',
-  },
+  // Icons are auto-detected from app/icon.svg and app/apple-icon.svg — no need
+  // to list them here.
 };
 
 export const viewport: Viewport = {
