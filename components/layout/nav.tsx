@@ -11,7 +11,7 @@ import { ThemeToggle } from '@/components/shared/theme-toggle';
 const NAV_LINKS = [
   { href: '/for-shoppers/', label: 'Shoppers' },
   { href: '/for-retailers/', label: 'Retailers' },
-  { href: '/for-affiliates/', label: 'Affiliates' },
+  { href: '/about/', label: 'About' },
   { href: '/ai-demo/', label: 'AI Demo', highlight: true },
 ];
 

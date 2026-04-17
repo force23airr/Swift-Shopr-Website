@@ -219,8 +219,8 @@ export default function ForRetailersPage() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="xl">
-                <Link href="/for-affiliates/">
-                  Affiliate Program
+                <Link href="/about/">
+                  About SwiftShopr
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>

@@ -7,13 +7,13 @@ const COLUMNS = [
     links: [
       { href: '/for-shoppers/', label: 'For Shoppers' },
       { href: '/for-retailers/', label: 'For Retailers' },
-      { href: '/for-affiliates/', label: 'For Affiliates' },
       { href: '/ai-demo/', label: 'AI Shopping Demo' },
     ],
   },
   {
     title: 'Company',
     links: [
+      { href: '/about/', label: 'About' },
       { href: '/support/', label: 'Support' },
       { href: 'mailto:developer@swiftshopr.shop', label: 'Partnerships' },
       { href: 'mailto:support@swiftshopr.org', label: 'Contact' },

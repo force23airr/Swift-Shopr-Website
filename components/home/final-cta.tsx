@@ -34,8 +34,8 @@ export function FinalCta() {
               Ready to transform your checkout?
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-balance text-lg text-white/80">
-              Whether you're a shopper, retailer, or affiliate — SwiftShopr is
-              built for you. Start exploring what's possible.
+              Whether you're a shopper or a retailer — SwiftShopr is built for
+              you. Start exploring what's possible.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button

@@ -28,10 +28,10 @@ const CHANNELS = [
   },
   {
     icon: ShieldCheck,
-    title: 'Affiliates',
-    body: 'Application status, payouts, creative kit.',
-    cta: 'affiliates@swiftshopr.shop',
-    href: 'mailto:affiliates@swiftshopr.shop',
+    title: 'Press & Media',
+    body: 'Press inquiries, media kit, brand assets.',
+    cta: 'press@swiftshopr.shop',
+    href: 'mailto:press@swiftshopr.shop',
   },
   {
     icon: HelpCircle,

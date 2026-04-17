@@ -18,7 +18,7 @@ Deployed as a static Next.js site on Render at [swiftshopr.shop](https://swiftsh
 | `/` | Home — hero, stats, features, app showcase, CTA |
 | `/for-shoppers` | Consumer-facing features |
 | `/for-retailers` | POS integration, Stripe Connect, pilot request |
-| `/for-affiliates` | Partner program — commissions, FAQ, apply CTA |
+| `/about` | Company mission, values, how we monetize, partners |
 | `/ai-demo` | Live Swifty AI chat demo calling the backend |
 | `/privacy`, `/terms`, `/support` | Legal + help |
 

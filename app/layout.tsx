@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s · SwiftShopr',
   },
   description:
-    'AI-powered checkout for modern retail. Scan items with your phone, pay instantly via Stripe, and walk out. For shoppers, retailers, and affiliates.',
+    'AI-powered checkout for modern retail. Scan items with your phone, pay instantly via Stripe, and walk out the door.',
   keywords: [
     'SwiftShopr',
     'scan and go',

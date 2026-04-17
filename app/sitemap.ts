@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/for-shoppers',
     '/for-retailers',
-    '/for-affiliates',
+    '/about',
     '/ai-demo',
     '/support',
     '/privacy',
