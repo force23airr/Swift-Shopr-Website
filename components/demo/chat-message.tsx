@@ -4,9 +4,16 @@ import { motion } from 'framer-motion';
 import { Sparkles, User, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ChatMessage as ChatMessageType } from '@/hooks/use-demo-chat';
+import type { DemoChatOutfit } from '@/lib/api';
 import { ProductCard } from './product-card';
 
-export function ChatMessage({ message, wakingUp }: { message: ChatMessageType; wakingUp?: boolean }) {
+export function ChatMessage({
+  message,
+  wakingUp,
+}: {
+  message: ChatMessageType;
+  wakingUp?: boolean;
+}) {
   const isUser = message.role === 'user';
   return (
     <motion.div
@@ -51,31 +58,11 @@ export function ChatMessage({ message, wakingUp }: { message: ChatMessageType; w
           )}
         </div>
 
-        {/* Product recommendations */}
-        {!isUser && message.products && message.products.length > 0 && (
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {message.products.slice(0, 4).map((p, i) => (
-              <ProductCard key={p.id || i} product={p} />
-            ))}
-          </div>
-        )}
-
-        {/* Outfit groups */}
+        {/* Outfit groups — each outfit has top + bottom + shoes */}
         {!isUser && message.outfits && message.outfits.length > 0 && (
-          <div className="space-y-3">
-            {message.outfits.slice(0, 3).map((outfit, idx) => (
-              <div key={idx}>
-                {outfit.caption && (
-                  <div className="mb-2 text-xs font-medium text-muted-foreground">
-                    {outfit.caption}
-                  </div>
-                )}
-                <div className="grid grid-cols-3 gap-2">
-                  {outfit.products.slice(0, 3).map((p, j) => (
-                    <ProductCard key={p.id || j} product={p} compact />
-                  ))}
-                </div>
-              </div>
+          <div className="space-y-4">
+            {message.outfits.slice(0, 3).map((outfit) => (
+              <OutfitBlock key={outfit.outfit_id} outfit={outfit} />
             ))}
           </div>
         )}
@@ -87,6 +74,29 @@ export function ChatMessage({ message, wakingUp }: { message: ChatMessageType; w
         </div>
       )}
     </motion.div>
+  );
+}
+
+function OutfitBlock({ outfit }: { outfit: DemoChatOutfit }) {
+  const items = [outfit.top, outfit.bottom, outfit.shoes].filter(Boolean);
+  return (
+    <div className="rounded-xl border border-border bg-background/60 p-3">
+      {outfit.description && (
+        <div className="mb-2 text-xs font-medium text-muted-foreground">
+          {outfit.description}
+        </div>
+      )}
+      <div className="grid grid-cols-3 gap-2">
+        {items.map((item) => (
+          <ProductCard key={item.id} product={item} compact />
+        ))}
+      </div>
+      {outfit.total_price && (
+        <div className="mt-2 text-right text-xs font-semibold text-primary">
+          Total: {outfit.total_price}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -105,7 +115,7 @@ function TypingIndicator({ wakingUp }: { wakingUp?: boolean }) {
             style={{ animationDelay: '300ms' }}
           />
         </div>
-        <span className="text-xs">Waking up our AI — first request takes a few seconds…</span>
+        <span className="text-xs">Waking up Swifty — first request takes a few seconds…</span>
       </div>
     );
   }

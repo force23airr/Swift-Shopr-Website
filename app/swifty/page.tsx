@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { ChatInput } from '@/components/demo/chat-input';
 import { ChatMessage } from '@/components/demo/chat-message';
 import { SuggestionChips } from '@/components/demo/suggestion-chips';
+import { ChatErrorBoundary } from '@/components/demo/error-boundary';
 import { useDemoChat } from '@/hooks/use-demo-chat';
 
 export default function SwiftyPage() {
@@ -101,19 +102,21 @@ export default function SwiftyPage() {
                 ref={scrollRef}
                 className="max-h-[520px] min-h-[400px] overflow-y-auto px-5 py-6"
               >
-                {messages.length === 0 ? (
-                  <EmptyState onPick={sendMessage} disabled={sending} />
-                ) : (
-                  <div className="space-y-5">
-                    {messages.map((m) => (
-                      <ChatMessage
-                        key={m.id}
-                        message={m}
-                        wakingUp={wakingUp && m.role === 'assistant' && m.loading}
-                      />
-                    ))}
-                  </div>
-                )}
+                <ChatErrorBoundary>
+                  {messages.length === 0 ? (
+                    <EmptyState onPick={sendMessage} disabled={sending} />
+                  ) : (
+                    <div className="space-y-5">
+                      {messages.map((m) => (
+                        <ChatMessage
+                          key={m.id}
+                          message={m}
+                          wakingUp={wakingUp && m.role === 'assistant' && m.loading}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </ChatErrorBoundary>
               </div>
 
               {/* Input */}

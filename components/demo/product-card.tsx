@@ -11,9 +11,14 @@ export function ProductCard({
 }) {
   const name = product.name || 'Product';
   const brand = product.brand;
-  const price =
+  const image =
+    (Array.isArray(product.image_urls) && product.image_urls[0]) || undefined;
+  const priceString =
     product.price ||
-    (product.price_cents ? product.price_cents / 100 : undefined);
+    (typeof product.price_cents === 'number'
+      ? `$${(product.price_cents / 100).toFixed(2)}`
+      : undefined);
+  const url = product.affiliate_url || product.product_url;
 
   const content = (
     <div
@@ -28,13 +33,16 @@ export function ProductCard({
           compact ? 'aspect-square' : 'aspect-[4/3]',
         )}
       >
-        {product.image_url ? (
+        {image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={product.image_url}
+            src={image}
             alt={name}
             className="h-full w-full object-cover"
             loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
           />
         ) : (
           <div className="grid h-full w-full place-items-center">
@@ -51,18 +59,18 @@ export function ProductCard({
         <div className={cn('truncate font-medium', compact ? 'text-xs' : 'text-sm')}>
           {name}
         </div>
-        {price !== undefined && (
+        {priceString && (
           <div className="mt-1 text-sm font-semibold text-primary">
-            ${price.toFixed(2)}
+            {priceString}
           </div>
         )}
       </div>
     </div>
   );
 
-  if (product.product_url) {
+  if (url) {
     return (
-      <a href={product.product_url} target="_blank" rel="noreferrer" className="block">
+      <a href={url} target="_blank" rel="noreferrer" className="block">
         {content}
       </a>
     );

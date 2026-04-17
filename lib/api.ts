@@ -27,15 +27,35 @@ export interface DemoChatRequest {
   conversation_id?: string | null;
 }
 
+// Matches commerce-agent-service's ProductRecommendation.
 export interface DemoChatProduct {
-  id?: string;
-  name?: string;
-  brand?: string;
-  price?: number;
+  id: string;
+  name: string;
+  brand?: string | null;
+  description?: string | null;
+  price?: string;
   price_cents?: number;
-  image_url?: string;
+  category?: string | null;
+  material?: string | null;
+  colors?: string[];
+  sizes?: string[];
+  image_urls?: string[];
+  product_url?: string | null;
+  affiliate_url?: string | null;
   merchant_name?: string;
-  product_url?: string;
+  is_sponsored?: boolean;
+  position?: number;
+}
+
+export interface DemoChatOutfit {
+  outfit_id: string;
+  description?: string;
+  top: DemoChatProduct;
+  bottom: DemoChatProduct;
+  shoes: DemoChatProduct;
+  total_price?: string;
+  total_price_cents?: number;
+  position?: number;
 }
 
 export interface DemoChatResponse {
@@ -43,11 +63,9 @@ export interface DemoChatResponse {
   data?: {
     response_version?: string;
     conversation_id?: string;
-    reply?: string;
     message?: string;
-    greeting?: string;
-    recommendations?: DemoChatProduct[];
-    outfits?: Array<{ products: DemoChatProduct[]; caption?: string }>;
+    outfits?: DemoChatOutfit[];
+    result_count?: number;
     [key: string]: unknown;
   };
   demo?: boolean;

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { sendDemoChat, type DemoChatProduct } from '@/lib/api';
+import { sendDemoChat, type DemoChatOutfit } from '@/lib/api';
 import { getOrCreateSessionId, resetSessionId } from '@/lib/session';
 
 export type ChatMessage =
@@ -10,8 +10,7 @@ export type ChatMessage =
       id: string;
       role: 'assistant';
       content: string;
-      products?: DemoChatProduct[];
-      outfits?: Array<{ products: DemoChatProduct[]; caption?: string }>;
+      outfits?: DemoChatOutfit[];
       loading?: boolean;
       error?: boolean;
     };
@@ -115,20 +114,15 @@ export function useDemoChat() {
 
         const data = result.data.data || {};
         const reply =
-          (data.reply as string) ||
-          (data.message as string) ||
-          (data.greeting as string) ||
+          (typeof data.message === 'string' && data.message) ||
           'Here are some ideas for you:';
 
-        const products = Array.isArray(data.recommendations)
-          ? (data.recommendations as DemoChatProduct[])
-          : undefined;
-        const outfits = Array.isArray(data.outfits)
-          ? (data.outfits as Array<{ products: DemoChatProduct[]; caption?: string }>)
+        const outfits = Array.isArray(data.outfits) && data.outfits.length > 0
+          ? data.outfits
           : undefined;
 
-        if (data.conversation_id) {
-          setConversationId(data.conversation_id as string);
+        if (typeof data.conversation_id === 'string') {
+          setConversationId(data.conversation_id);
         }
 
         setMessages((prev) =>
@@ -138,7 +132,6 @@ export function useDemoChat() {
                   ...m,
                   loading: false,
                   content: reply,
-                  products,
                   outfits,
                 }
               : m,
