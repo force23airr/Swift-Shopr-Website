@@ -1,0 +1,47 @@
+# Render Static Site configuration for SwiftShopr Website
+# https://render.com/docs/static-sites
+#
+# Usage: connect this repo in Render dashboard, select "Static Site" preset,
+# and Render will read this file. Or configure the dashboard directly to match.
+
+services:
+  - type: web
+    name: swiftshopr-website
+    runtime: static
+    repo: https://github.com/force23airr/Swift-Shopr-Website
+    branch: main
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://shopr-scanner-backend.onrender.com
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://swiftshopr.shop
+      - key: NEXT_PUBLIC_APP_STORE_URL
+        value: https://apps.apple.com/us/app/swift-shopr/id6751731104
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: "camera=(), microphone=(), geolocation=()"
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: redirect
+        source: /privacy.html
+        destination: /privacy/
+      - type: redirect
+        source: /support.html
+        destination: /support/
+      - type: redirect
+        source: /app
+        destination: https://apps.apple.com/us/app/swift-shopr/id6751731104
